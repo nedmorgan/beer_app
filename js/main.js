@@ -4,7 +4,7 @@ $(document).ready(function() {
   $("#submit").click(function() {
       $.ajax({
         type: "GET",
-        url: "https://api.brewerydb.com/v2/beers?key=5d4596667cea2ebe5cfcfce6055b2745",
+        url: "https://api.brewerydb.com/v2/beers?key=" + key,
         dataType: "json",
         success: function(blob) {
           console.log(blob);
