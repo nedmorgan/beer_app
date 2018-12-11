@@ -1,17 +1,14 @@
-$(document).ready(function() {
-  console.log("ready")
+let beers = [];
+const url = 'https://api.brewerydb.com/v2/beers?key=' + key;
 
-  $("#submit").click(function() {
-      $.ajax({
-        type: "GET",
-        url: "https://api.brewerydb.com/v2/beers?key=" + key,
-        dataType: "json",
-        success: function(blob) {
-          console.log(blob);
-        },
-        error: function(xhr, status, error) {
-          console.log("Error: " + status + " " + error + " " + xhr.status + " " + xhr.statusText)
-        }
-      });
-    });
-});
+fetch(url, {
+  mode: 'cors',
+}) 
+  .then(res => res.json())
+  .then(res => {
+    beers = res.results;
+    render();
+    console.log(res);
+  })
+
+  .catch(err => console.log(err));
